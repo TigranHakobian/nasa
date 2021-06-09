@@ -7,7 +7,6 @@ const useFetch = endpoint =>{
     const dispatch = useDispatch()
     const apiState = useSelector(selectApiState)
 
-    console.log(apiState)
     const performFetch = useCallback(data => dispatch(apiActions.fetch(endpoint,data)),[endpoint,dispatch])
 
     const response = useMemo(() => apiState[endpoint],[apiState,endpoint])
