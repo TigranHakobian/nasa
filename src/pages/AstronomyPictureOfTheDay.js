@@ -1,23 +1,69 @@
-import React, {useEffect} from 'react'
-import {KEY} from "../modules/api/ApinearByAsteroids";
-import useFetch from "../hooks/useFetch";
+import React, {useEffect, useState} from 'react'
+// import {KEY} from "../modules/api/ApinearByAsteroids";
+// import useFetch from "../hooks/useFetch";
+import TextField from "@material-ui/core/TextField";
+import Wrapper from "../components/Wrapper";
+import {actionsApod} from "../store/actions/apod";
+import {connect} from "react-redux";
 
 
-export default function AstronomyPictureOfTheDay() {
-    const {response, performFetch} = useFetch(KEY)
-    // const [data,setData] = useState([])
+const AstronomyPictureOfTheDay = (props) => {
+    // const {response, performFetch} = useFetch(KEY);
+    const [date, setDate] = useState("");
 
-    useEffect(  ()=>{
-        performFetch();
-    },[performFetch])
+    useEffect(()=> {
+        props.actionsApod(date)
+        console.log(11111111, props.apodData)
+    },[date])
 
-    console.log(response.data)
+
+    //
+    // useEffect(() => {
+    //     performFetch();
+    // }, [performFetch])
+
+
+    // console.log(response.data)
+
+    const onChangeDate = (e) => {
+        setDate(e.target.value);
+        console.log(e.target.value)
+
+    }
 
     return (
-        <div>
-            Photos
-        </div>
+        <Wrapper>
+            <div className={"calendar-one-day-div"}>
+                <TextField
+                    className="calendar-one-day"
+                    id="date"
+                    type="date"
+                    defaultValue="2021-03-22"
+                    onChange={(e) => onChangeDate(e)}/>
+            </div>
+
+            <>
+                <h3>{props.apodData.explanation}</h3>
+                <img
+                    style={{width: '250px', height: '250px'}}
+                    src={props.apodData.hdurl} alt="Photo"/>
+            </>
+        </Wrapper>
     )
 }
+
+
+
+// export default AstronomyPictureOfTheDay;
+const mapStateToProps = (props) => ({
+    apodData: props.apod.apodData,
+});
+
+const mapDispatchToProps = {
+    actionsApod,
+};
+const ApodContainer = connect(mapStateToProps, mapDispatchToProps)(AstronomyPictureOfTheDay);
+
+export default ApodContainer;
 
 
