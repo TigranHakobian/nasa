@@ -9,7 +9,7 @@ import NewPlanet from "./pages/NewPlanet";
  function App() {
   return (
               <Router>
-                  <Header/>
+                  {/*<Header/>*/}
                   <Switch>
                      <Route path="/home"  exact component={Home}/>
                      <Route path="/nearbyasteroids" component={NearbyAsteroids}/>

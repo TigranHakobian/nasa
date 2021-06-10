@@ -1,7 +1,13 @@
 import React from 'react'
+import Wrapper from "../components/Wrapper"
 
 export default function Home() {
-    return <img className="img-planets" src="https://acegif.com/wp-content/uploads/solar-system-8.gif" alt=""/>
+
+    return (
+        <Wrapper>
+            <img className="img-planets" src="https://acegif.com/wp-content/uploads/solar-system-8.gif" alt=""/>
+        </Wrapper>
+        )
 
 
 }

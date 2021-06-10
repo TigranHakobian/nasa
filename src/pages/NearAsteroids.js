@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios";
 import Pagination from "../components/Pagination";
+import Wrapper from "../components/Wrapper"
 
 
 export default function NearAsteroids() {
@@ -26,7 +27,7 @@ export default function NearAsteroids() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
     return (
-        <div>
+        <Wrapper>
             {loading?<h2>loading...</h2>
                 :<ul className="list-group mb-4">
                     {currentPosts.map(post =>(
@@ -36,7 +37,7 @@ export default function NearAsteroids() {
                     ))}
                  </ul>}
                  <Pagination postPerPage={postPerPage} totalPosts={post.length} paginate={paginate} />
-        </div>
+        </Wrapper>
     )
 }
 

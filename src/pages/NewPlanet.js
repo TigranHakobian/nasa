@@ -1,6 +1,7 @@
 import React ,{useState}from 'react'
 import Footer from "../components/Footer";
-import Select from 'react-select';
+import Wrapper from "../components/Wrapper"
+
 
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -33,7 +34,7 @@ export default function NewPlanet() {
         })
     }
 
-    
+
 
     const  changdistance = (event)=>{
         setValus({
@@ -72,7 +73,7 @@ export default function NewPlanet() {
 
 
     return (
-        <div >
+        <Wrapper >
            <p className={"text-of-new-planet"}>If you found new planet you can add it to our directory (Reactive forms demo)</p>
             <form action="" className="NewPlanet" onSubmit={send}>
                 <input
@@ -93,14 +94,14 @@ export default function NewPlanet() {
                     value={valus.diametr}
                     onChange={changeDiameterName}
                 />
-                <input 
+                <input
                     type="text"
                     placeholder="Distance (mln km)"
                     value={valus.distance}
                     onChange={changdistance}
 
                 />
-                <input type="text" 
+                <input type="text"
                  placeholder="Your name"
                  value={valus.yourName}
                     onChange={changYourName}
@@ -118,6 +119,6 @@ export default function NewPlanet() {
                 <button className={"btn-last"}> Submit</button>
             </form>
             <Footer/>
-        </div>
+        </Wrapper>
     )
 }

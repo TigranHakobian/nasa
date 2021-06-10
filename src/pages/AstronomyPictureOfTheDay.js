@@ -43,10 +43,13 @@ const AstronomyPictureOfTheDay = (props) => {
             </div>
 
             <>
-                <h3>{props.apodData.explanation}</h3>
-                <img
-                    style={{width: '250px', height: '250px'}}
+                <div className={"title-of-apod"}>{props.apodData.copyright}</div>
+                <div className={"explanation-of-apod"}>{props.apodData.explanation}</div>
+                <div className={"for-img"}>
+                    <img
                     src={props.apodData.hdurl} alt="Photo"/>
+                </div>
+
             </>
         </Wrapper>
     )
