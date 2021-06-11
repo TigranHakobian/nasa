@@ -1,6 +1,4 @@
 import React, {useEffect, useState} from 'react'
-// import {KEY} from "../modules/api/ApinearByAsteroids";
-// import useFetch from "../hooks/useFetch";
 import TextField from "@material-ui/core/TextField";
 import Wrapper from "../components/Wrapper";
 import {actionsApod} from "../store/actions/apod";
@@ -8,7 +6,6 @@ import {connect} from "react-redux";
 
 
 const AstronomyPictureOfTheDay = (props) => {
-    // const {response, performFetch} = useFetch(KEY);
     const [date, setDate] = useState("");
 
     useEffect(()=> {
@@ -16,14 +13,6 @@ const AstronomyPictureOfTheDay = (props) => {
         console.log(11111111, props.apodData)
     },[date])
 
-
-    //
-    // useEffect(() => {
-    //     performFetch();
-    // }, [performFetch])
-
-
-    // console.log(response.data)
 
     const onChangeDate = (e) => {
         setDate(e.target.value);
@@ -33,6 +22,7 @@ const AstronomyPictureOfTheDay = (props) => {
 
     return (
         <Wrapper>
+
             <div className={"calendar-one-day-div"}>
                 <TextField
                     className="calendar-one-day"
@@ -57,7 +47,6 @@ const AstronomyPictureOfTheDay = (props) => {
 
 
 
-// export default AstronomyPictureOfTheDay;
 const mapStateToProps = (props) => ({
     apodData: props.apod.apodData,
 });

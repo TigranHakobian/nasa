@@ -130,3 +130,15 @@ footer{
 .for-img img{
   width:80%
 }
+
+.table-div{
+  display: flex;
+  justify-content: space-around;
+  font-size: 18px;
+  border-bottom: 1px dodgerblue solid;
+}
+
+.table-div div{
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
