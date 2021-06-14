@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import TextField from "@material-ui/core/TextField";
 import Wrapper from "../components/Wrapper";
 import {actionsApod} from "../store/actions/apod";
 import {connect} from "react-redux";
@@ -24,14 +23,13 @@ const AstronomyPictureOfTheDay = (props) => {
         <Wrapper>
 
             <div className={"calendar-one-day-div"}>
-                <TextField
+                <input
                     className="calendar-one-day"
                     id="date"
                     type="date"
                     defaultValue="2021-03-22"
                     onChange={(e) => onChangeDate(e)}/>
             </div>
-
             <>
                 <div className={"title-of-apod"}>{props.apodData.copyright}</div>
                 <div className={"explanation-of-apod"}>{props.apodData.explanation}</div>
@@ -39,7 +37,6 @@ const AstronomyPictureOfTheDay = (props) => {
                     <img
                     src={props.apodData.hdurl} alt="Photo"/>
                 </div>
-
             </>
         </Wrapper>
     )

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Wrapper from "../components/Wrapper"
 import {connect} from "react-redux";
-import TextField from "@material-ui/core/TextField";
 import {actionsANA} from "../store/actions/asteroids";
 import _ from "lodash"
 import ReactPaginate from 'react-paginate';
@@ -12,18 +11,20 @@ function NearAsteroids(props) {
     const [loading, setLoading] = useState(false)
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
-    const [search, setSearch] = useState()
+    const [search, setSearch] = useState(0)
     const [allData, setAllData] = useState([])
 
-    const [perPage, setPerPage] = useState(5)
-    const [currentPage, setCurrentPage] = useState(0)
-    const [isSet, setIsSet] = useState(0)
+    const [perPage, setPerPage] = useState(0)
+
+    const perPageEnd= Math.floor(allData.length/10) > 0 ? Math.floor(allData.length/10) + 1:Math.floor(allData.length/10)
+
 
 
     useEffect(() => {
         props.actionsANA(startDate, endDate)
         setLoading(true)
         const result = props.nearAst.asteroids.asteroidsData.near_earth_objects
+
         console.log(props.nearAst.asteroids.asteroidsData)
         const array_of_data = _.map(result);
         console.log(array_of_data)
@@ -36,29 +37,22 @@ function NearAsteroids(props) {
 
 
     const PageChange = (e) => {
-        const selectedPage = e.selected;
-        const isset = selectedPage * perPage;
-        setCurrentPage(selectedPage)
-        setIsSet(isSet)
+        const selectedPage = e.selected + 1;
+        setPerPage(selectedPage * 10 -10)
     };
 
     const onChangeStartDate = (e) => {
         console.log(e.target.value)
         setStartDate(e.target.value)
-        console.log(startDate)
     }
 
     const onChangeEndDate = (e) => {
         setEndDate(e.target.value)
-        console.log(endDate)
-
     }
 
     const find = () => {
-        console.log("st date", startDate)
-        console.log("end date", endDate)
-        console.log("all Data", allData)
         setSearch(`${Math.random() * 10000}`)
+        console.log(Math.ceil(allData.length/10))
     }
 
 
@@ -66,15 +60,17 @@ function NearAsteroids(props) {
         <Wrapper>
             <div className={"cal-and-btn"}>
                 <div className="cont-calendar">
-                    <TextField
+                    <input
                         className="calendar-one-day"
                         id="start-date"
+                        // max="2017-04-20"
                         type="date"
                         defaultValue={moment().format('YYYY-MM-DD')}
                         onChange={(e) => onChangeStartDate(e)}/>
-                    <TextField
+                    <input
                         className="calendar-one-day"
                         id="date"
+                        max={moment().format('YYYY-MM-DD')}
                         type="date"
                         defaultValue={moment().format('YYYY-MM-DD')}
                         onChange={(e) => onChangeEndDate(e)}/>
@@ -83,32 +79,50 @@ function NearAsteroids(props) {
 
                 <button onClick={find} className="btn-of-NA"> Go!</button>
             </div>
-
-            {/*{*/}
-            {/*    endDate - 7 */}
-            {/*}*/}
-            {allData === [] ? <h2>loading...</h2>
-                : allData.map(arr => (
-                    <div key={_.uniqueId()} className="table-div">
-                        <div>{arr.name} </div>
-                        <div>{arr.estimated_diameter.feet.estimated_diameter_max} </div>
-                        <div>{arr.absolute_magnitude_h}</div>
-                        <div>{arr.estimated_diameter.meters.estimated_diameter_min} - {arr.estimated_diameter.meters.estimated_diameter_max} </div>
-                        {arr.is_sentry_object ? <div>Yes</div> : <div>No</div>}
+            {allData.length === 0 ? null :
+            <div className={"show-all"}>
+            <div className={"table-of-div"}>
+                <table className={"table-of-NA"}>
+                    <thead>
+                    <tr>{console.log(allData)}
+                        <th>Title</th>
+                        <th>Distance (km)</th>
+                        <th>Absolute Magnitude</th>
+                        <th>Is potentially hazardous</th>
+                        <th>Diameter (meters)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                     {allData.slice(perPage, perPage + 10).map(arr => (
+                            <tr key={_.uniqueId()}>
+                                <td>{arr.name}</td>
+                                <td>{arr.estimated_diameter.feet.estimated_diameter_max}</td>
+                                <td>{arr.absolute_magnitude_h}</td>
+                                <td>{arr.estimated_diameter.meters.estimated_diameter_min} - {arr.estimated_diameter.meters.estimated_diameter_max}</td>
+                                {arr.is_sentry_object ? <td>Yes</td> : <td>No</td>}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                </div>
+                <div className={"div-of-pagination"}>
+                    <ReactPaginate
+                        previousLabel={"prev"}
+                        nextLabel={"next"}
+                        pageCount={perPageEnd}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        onPageChange={PageChange}
+                        containerClassName={"pagination"}
+                    />
+                </div>
+                <div className={"page-count"}>
+                    <div>
+                        page {perPage === 0 ? 1 : +perPage.toString().slice(0, 1) + 1} / {perPageEnd}
                     </div>
-                        // ? !props.nearAst.<div>chkaaaa</div>
-                ))}
-            <ReactPaginate
-                previousLabel={"prev"}
-                nextLabel={"next"}
-                pageCount={7}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-                onPageChange={PageChange}
-                containerClassName={"pagination"}
-            />
+                </div>
 
-
+        </div>}
         </Wrapper>
     )
 }

@@ -67,10 +67,6 @@ i18n.use(initReactI18next)
      return (
         <Suspense  fallback={"Loading"}>
         <header>
-            {/*<select name="language" onChange={onChangeLng}>*/}
-            {/*    <option value="en">En</option>*/}
-            {/*    <option value="ru">Ru</option>*/}
-            {/*</select>*/}
             <h1 className="title-nasa">NASA {t("nb")} </h1>
             <ul  className="header">
 
@@ -92,7 +88,7 @@ i18n.use(initReactI18next)
                 <li className="languages">
                     <span onClick={changToEn}>EN
                     </span>
-                    <span  onClick={changToRu}>| РУ |</span>
+                    <span  onClick={changToRu}> | РУ |</span>
                     <span onClick={changToAm}> ՀՅ</span>
                 </li>
             </ul>

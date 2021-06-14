@@ -13,6 +13,7 @@ code {
 }
 
 .header{
+  margin-top: 70px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -84,7 +85,7 @@ a{
 }
 
 footer{
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
@@ -138,11 +139,11 @@ footer{
 
 .calendar-one-day{
   background-color: rgb(227,247,254);
-  border-radius: 9px;
-  border: red solid 1px;
+  border-radius: 12px;
+  border: rgb(17, 141, 146) solid 0.5px;
   width: 200px;
-  height: 30px;
-  font-size: 4px;
+  height: 40px;
+  font-size: 12px;
   color: #7f6666;
 }
 
@@ -154,10 +155,10 @@ footer{
 .btn-of-NA{
   width: 60px;
   height: 35px;
-  background-color: rgba(210,186,214,0.24);
+  background-color: rgba(249,249,249);
   color: rgb(102,102,102);
   font-weight: bold;
-  border: 0.5px rgb(102,102,102) solid;
+  border: 0.5px rgb(183, 173, 173) solid;
   border-radius: 9px;
   margin-left: 30px;
 }
@@ -170,6 +171,7 @@ footer{
 .pagination {
   list-style-type: none;
   outline: none;
+  margin-top: 20px;
 }
 .pagination  .active  a{
   background-color:rgb(156,220,254) ;
@@ -196,3 +198,42 @@ footer{
   color:rgb(156,220,254)
 }
 
+.table-of-NA {
+  margin-top: 40px;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 20px;
+}
+
+tr:nth-child(even) {
+  background-color: rgb(249,249,249);
+}
+
+.table-of-div,.div-of-pagination{
+  display: flex;
+  justify-content: center;
+}
+
+.div-of-pagination, .page-count{
+  display: flex;
+  justify-content: center;
+}
+
+
+.page-count div{
+  display: flex;
+  padding-top: 9px;
+  justify-content: center;
+  width: 80%;
+  height: 50px;
+  border:rgb(226, 222, 222) solid 0.5px;
+  border-radius: 4px;
+  background-color: rgb(249,249,249);
+  font-size: 14px;
+}
