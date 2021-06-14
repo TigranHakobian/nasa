@@ -3,7 +3,7 @@ export const ASTEROIDS_SUCCESS = 'ASTEROIDS_SUCCESS';
 export const ASTEROIDS_FAIL = 'ASTEROIDS_FAIL';
 
 
-export function actionsApod(startDate, endDate) {
+export function actionsANA(startDate, endDate) {
     return {
         type: ASTEROIDS_REQUEST, payload: {startDate, endDate},
     };

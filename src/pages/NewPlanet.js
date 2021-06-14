@@ -83,11 +83,6 @@ export default function NewPlanet() {
                     value={valus.planetName}
                 />
                 <span></span>
-                {/*<Select*/}
-                {/*    onChange={changeGal}*/}
-                {/*    options={options}*/}
-                {/*    value={valus.GalaxyName}*/}
-                {/*/>*/}
                 <input
                     type="number"
                     placeholder="Diameter (km)"

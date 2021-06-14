@@ -40,6 +40,7 @@ a{
   font-size: 12px;
   color: rgb(133,117,218);
   padding-left: 60px !important;
+  cursor: pointer;
 }
 
 .img-planets{
@@ -92,20 +93,7 @@ footer{
   color: chartreuse;
 }
 
-.calendar-one-day-div{
-  display: flex;
-  justify-content: center;
-}
 
-.calendar-one-day{
-  background-color: rgb(227,247,254);
-  border-radius: 9px;
-  border: red solid 1px;
-  width: 200px;
-  height: 30px;
-  font-size: 4px;
-  color: #7f6666;
-}
 
 .explanation-of-apod{
   margin-left: 12%;
@@ -142,3 +130,69 @@ footer{
   margin-top: 4px;
   margin-bottom: 4px;
 }
+
+.calendar-one-day-div{
+  display: flex;
+  justify-content: center;
+}
+
+.calendar-one-day{
+  background-color: rgb(227,247,254);
+  border-radius: 9px;
+  border: red solid 1px;
+  width: 200px;
+  height: 30px;
+  font-size: 4px;
+  color: #7f6666;
+}
+
+.cal-and-btn{
+  display: flex;
+  justify-content: center;
+}
+
+.btn-of-NA{
+  width: 60px;
+  height: 35px;
+  background-color: rgba(210,186,214,0.24);
+  color: rgb(102,102,102);
+  font-weight: bold;
+  border: 0.5px rgb(102,102,102) solid;
+  border-radius: 9px;
+  margin-left: 30px;
+}
+
+.cont-calendar{
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.pagination {
+  list-style-type: none;
+  outline: none;
+}
+.pagination  .active  a{
+  background-color:rgb(156,220,254) ;
+  color: white;
+}
+.pagination li a{
+  border: 1px solid rgb(156,220,254) ;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.pagination > li >a:hover{
+  background-color:rgb(156,220,254);
+  color: white;
+}
+
+.pagination > .selected a {
+  background-color:rgb(156,220,254);
+  color: white;
+}
+
+.pagination > li > a,
+.pagination > li > span{
+  color:rgb(156,220,254)
+}
+
