@@ -4,11 +4,13 @@ import Home from "./pages/Home";
 import NearbyAsteroids from "./pages/NearAsteroids";
 import AstronomyPictureOfTheDay from "./pages/AstronomyPictureOfTheDay";
 import NewPlanet from "./pages/NewPlanet";
+import { Redirect } from "react-router-dom";
 
  function App() {
   return (
               <Router>
                   <Switch>
+                      {/*<Redirect from="/nasaProject" to="/home" />*/}
                      <Route path="/home"  exact component={Home}/>
                      <Route path="/nearbyasteroids" component={NearbyAsteroids}/>
                      <Route path="/astronomypictureoftheday" component={AstronomyPictureOfTheDay}/>

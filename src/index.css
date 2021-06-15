@@ -155,7 +155,7 @@ footer{
 .btn-of-NA{
   width: 60px;
   height: 35px;
-  background-color: rgba(249,249,249);
+  background-color: rgb(249,249,249);
   color: rgb(102,102,102);
   font-weight: bold;
   border: 0.5px rgb(183, 173, 173) solid;

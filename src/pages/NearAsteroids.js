@@ -5,6 +5,7 @@ import {actionsANA} from "../store/actions/asteroids";
 import _ from "lodash"
 import ReactPaginate from 'react-paginate';
 import moment from "moment";
+import ReactLoading from 'react-loading';
 
 
 function NearAsteroids(props) {
@@ -23,10 +24,10 @@ function NearAsteroids(props) {
 
 
     useEffect(() => {
+        setLoading(true)
         props.actionsANA(startDate, endDate)
         setLoading(true)
         const result = props.nearAst.asteroids.asteroidsData.near_earth_objects
-
         console.log(props.nearAst.asteroids.asteroidsData)
         const array_of_data = _.map(result);
         console.log(array_of_data)
@@ -34,7 +35,6 @@ function NearAsteroids(props) {
         console.log(gotData)
         setAllData(gotData)
         setLoading(false)
-
     }, [search])
 
 
@@ -53,7 +53,6 @@ function NearAsteroids(props) {
     }
 
     const find = () => {
-
          let a = startDate.replace("-","")
          let c =   a.replace("-","")
          let b = endDate.replace("-","")
@@ -65,7 +64,7 @@ function NearAsteroids(props) {
 
         console.log(balance)
 
-        if (balance < 7 || balance === 75 || balance === 74 || balance === 73 || balance === 72  || balance === 71  || balance === 70){
+        if (balance < 7 || balance === 76 || balance === 75 || balance === 74 || balance === 73 || balance === 72  || balance === 71  || balance === 70  || balance === 8870 || balance === 8871 || balance === 8872 || balance === 8873 || balance === 8874 || balance === 8875|| balance === 8876){
             console.log(balance)
             setIsError(false)
 
@@ -83,14 +82,11 @@ function NearAsteroids(props) {
                 <div className="cont-calendar">
                     <input
                         className="calendar-one-day"
-                        id="start-date"
-                        // max="2017-04-20"
                         type="date"
                         defaultValue={moment().format('YYYY-MM-DD')}
                         onChange={(e) => onChangeStartDate(e)}/>
                     <input
                         className="calendar-one-day"
-                        id="date"
                         max={moment().format('YYYY-MM-DD')}
                         type="date"
                         defaultValue={moment().format('YYYY-MM-DD')}
@@ -117,6 +113,7 @@ function NearAsteroids(props) {
                     </tr>
                     </thead>
                     <tbody>
+                    {loading?  <ReactLoading type={"type"} color={"red"} height={667} width={375} /> : null}
                      {allData.slice(perPage, perPage + 10).map(arr => (
                             <tr key={_.uniqueId()}>
                                 <td>{arr.name}</td>
