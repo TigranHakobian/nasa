@@ -7,32 +7,30 @@ import ReactPaginate from 'react-paginate';
 import moment from "moment";
 import ReactLoading from 'react-loading';
 
+const NearAsteroids = (props) => {
 
-function NearAsteroids(props) {
     const [loading, setLoading] = useState(false)
+
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+
     const [search, setSearch] = useState(0)
+
     const [allData, setAllData] = useState([])
 
     const [perPage, setPerPage] = useState(0)
-
     const [isThereError, setIsError] = useState(false)
 
-    const perPageEnd= Math.floor(allData.length/10) > 0 ? Math.floor(allData.length/10) + 1:Math.floor(allData.length/10)
+    const perPageEnd = Math.floor(allData.length/10) > 0 ? Math.floor(allData.length/10) + 1:Math.floor(allData.length/10)
 
 
 
     useEffect(() => {
         setLoading(true)
         props.actionsANA(startDate, endDate)
-        setLoading(true)
         const result = props.nearAst.asteroids.asteroidsData.near_earth_objects
-        console.log(props.nearAst.asteroids.asteroidsData)
         const array_of_data = _.map(result);
-        console.log(array_of_data)
         let gotData = array_of_data.flat()
-        console.log(gotData)
         setAllData(gotData)
         setLoading(false)
     }, [search])
@@ -52,30 +50,35 @@ function NearAsteroids(props) {
         setEndDate(e.target.value)
     }
 
-    const find = () => {
-         let a = startDate.replace("-","")
-         let c =   a.replace("-","")
-         let b = endDate.replace("-","")
-         let d =  b.replace("-","")
+    const searchTo = () => {
+         const a = startDate.replace("-","")
+         const c =   a.replace("-","")
+         const b = endDate.replace("-","")
+         const d =  b.replace("-","")
 
-        let balance = +d - +c
+         const balance = +d - +c
 
-        console.log(+d , +c)
-
-        console.log(balance)
-
-        if (balance < 7 || balance === 76 || balance === 75 || balance === 74 || balance === 73 || balance === 72  || balance === 71  || balance === 70  || balance === 8870 || balance === 8871 || balance === 8872 || balance === 8873 || balance === 8874 || balance === 8875|| balance === 8876){
-            console.log(balance)
-            setIsError(false)
-
-            setSearch(`${Math.random() * 10000}`)
-            console.log(Math.ceil(allData.length/10))
-        }else
+        if (
+            balance < 7 ||
+            balance === 76 ||
+            balance === 75 || balance === 74 ||
+            balance === 73 || balance === 72  ||
+            balance === 71  || balance === 70  ||
+            balance === 8870 || balance === 8871 ||
+            balance === 8872 || balance === 8873 ||
+            balance === 8874 || balance === 8875||
+            balance === 8876
+        )
         {
-            console.log("ERRROOORRRRR")
+            setIsError(false)
+            setSearch(Math.random() * 10000)
+        }
+        else
+        {
             setIsError(true)
         }
     }
+
     return (
         <Wrapper>
             <div className={"cal-and-btn"}>
@@ -92,19 +95,19 @@ function NearAsteroids(props) {
                         defaultValue={moment().format('YYYY-MM-DD')}
                         onChange={(e) => onChangeEndDate(e)}/>
                 </div>
-                <button onClick={find} className="btn-of-NA"> Go!</button>
+                <button onClick={searchTo} className="btn-of-NA"> Go!</button>
             </div>
             {
-                isThereError?
-                    <div className={"error-of-week"}>Range should not exceed 1 week</div>
-                           :null
+                isThereError? <div className={"error-of-week"}>Range should not exceed 1 week</div> :null
             }
-            {allData.length === 0 ? null :
+            {
+                allData.length === 0 ?
+                null :
             <div className={"show-all"}>
             <div className={"table-of-div"}>
                 <table className={"table-of-NA"}>
                     <thead>
-                    <tr>{console.log(allData)}
+                    <tr>
                         <th>Title</th>
                         <th>Distance (km)</th>
                         <th>Absolute Magnitude</th>
@@ -113,7 +116,7 @@ function NearAsteroids(props) {
                     </tr>
                     </thead>
                     <tbody>
-                    {loading?  <ReactLoading type={"type"} color={"red"} height={667} width={375} /> : null}
+                    {loading?  <ReactLoading type={"type"} color={"lightblue"} height={667} width={375} /> : null}
                      {allData.slice(perPage, perPage + 10).map(arr => (
                             <tr key={_.uniqueId()}>
                                 <td>{arr.name}</td>
@@ -126,24 +129,25 @@ function NearAsteroids(props) {
                     </tbody>
                 </table>
                 </div>
-                <div className={"div-of-pagination"}>
+                <div className="div-of-pagination">
                     <ReactPaginate
-                        previousLabel={"prev"}
-                        nextLabel={"next"}
+                        previousLabel="prev"
+                        nextLabel="next"
                         pageCount={perPageEnd}
                         marginPagesDisplayed={2}
                         pageRangeDisplayed={5}
                         onPageChange={PageChange}
-                        containerClassName={"pagination"}
+                        containerClassName="pagination"
                     />
                 </div>
-                <div className={"page-count"}>
+                <div className="page-count">
                     <div>
                         page {perPage === 0 ? 1 : +perPage.toString().slice(0, 1) + 1} / {perPageEnd}
                     </div>
                 </div>
 
-        </div>}
+        </div>
+            }
         </Wrapper>
     )
 }

@@ -1,17 +1,9 @@
 import React ,{useState}from 'react'
-import Footer from "../components/Footer";
+import Footer from "../components/Footer"
 import Wrapper from "../components/Wrapper"
 
-
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-];
-
-
-export default function NewPlanet() {
-    const [valus,setValus] = useState({
+ const NewPlanet = () => {
+    const [values,setValues] = useState({
         planetName:"",
         galaxyName:"",
         diametr:"",
@@ -20,57 +12,43 @@ export default function NewPlanet() {
         email:"",
     })
 
-    const  [sended,setSended] = useState(false)
+    const  [sent,setSent] = useState(false)
 
-    const  changePlanetName = (event)=>{
-        setValus({
-            ...valus,planetName:event.target.value
+    const  changePlanetName = (event) => {
+        setValues({
+            ...values,planetName:event.target.value
         })
     }
 
-    const  changeDiameterName = (event)=>{
-        setValus({
-            ...valus,diametr:event.target.value
+    const  changeDiameterName = (event) => {
+        setValues({
+            ...values,diametr:event.target.value
         })
     }
 
-
-
-    const  changdistance = (event)=>{
-        setValus({
-            ...valus,distance:event.target.value
+    const  changDistance = (event) => {
+        setValues({
+            ...values,distance:event.target.value
         })
     }
 
-    const  changYourName = (event)=>{
-        setValus({
-            ...valus,yourName:event.target.value
+    const  changYourName = (event) => {
+        setValues({
+            ...values,yourName:event.target.value
         })
     }
 
-
-    const  changeEmail = (event)=>{
-        setValus({
-            ...valus,email:event.target.value
+    const  changeEmail = (event) => {
+        setValues({
+            ...values,email:event.target.value
         })
     }
 
-
-
-
-    const  changeGal = (event)=>{
-        setValus({
-            ...valus,galaxyName:event.target.value
-        })
-    }
-
-    const send =(event)=>{
+    const send = (event) => {
         event.preventDefault();
-        setSended(true)
-        console.log(valus)
+        setSent(true)
+        console.log(values)
     }
-
-
 
     return (
         <Wrapper >
@@ -80,36 +58,28 @@ export default function NewPlanet() {
                     type="text"
                     placeholder="Planet Name"
                     onChange={changePlanetName}
-                    value={valus.planetName}
-                />
-                <span></span>
+                    value={values.planetName}/>
                 <input
                     type="number"
                     placeholder="Diameter (km)"
-                    value={valus.diametr}
-                    onChange={changeDiameterName}
-                />
+                    value={values.diametr}
+                    onChange={changeDiameterName}/>
                 <input
                     type="text"
                     placeholder="Distance (mln km)"
-                    value={valus.distance}
-                    onChange={changdistance}
-
-                />
+                    value={values.distance}
+                    onChange={changDistance}/>
                 <input type="text"
                  placeholder="Your name"
-                 value={valus.yourName}
-                    onChange={changYourName}
-                  />
-
+                 value={values.yourName}
+                    onChange={changYourName}/>
                 <input
                     type="email"
                    placeholder="Your email"
-                    value={valus.email}
-                    onChange={changeEmail}
-                />
+                    value={values.email}
+                    onChange={changeEmail}/>
                 {
-                    sended? <div className={"success-message"}> Thank you!</div>:null
+                    sent? <div className={"success-message"}> Thank you!</div>:null
                 }
                 <button className={"btn-last"}> Submit</button>
             </form>
@@ -117,3 +87,4 @@ export default function NewPlanet() {
         </Wrapper>
     )
 }
+export default NewPlanet;

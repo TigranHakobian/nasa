@@ -1,0 +1,25 @@
+  {
+    "translationsEn":{
+    "nb":"BROWSER",
+    "home":"HOME",
+    "nearBy":"NEARBY ASTEROIDS",
+    "apod":"ASTRONOMY PICTURE OF THE DAY",
+    "snp":"SUBMIT NEW PLANET"
+  },
+
+  "translationsRu" :{
+    "nb":"БРАУЗЕР",
+    "home":"ГЛАВНАЯ",
+    "nearBy":"БЛИЖАЙШИЕ АСТЕРОИДЫ",
+    "apod":"АСТРОНОМИЧЕСКАЯ КАРТИНКА ДНЯ",
+    "snp":"ДОБАВИТЬ НОВУЮ ПЛАНЕТУ"
+  },
+
+  "translationsAm":{
+    "nb":"ԲՐԱՈՒԶԵՐ",
+    "home":"Գլխավոր",
+    "nearBy":"ՄՈՏԱԿԱ ԱՍՏԵՐՈԻԴԸ",
+    "apod":"ՕՐՎԱ ԱՍՏԵՐՈԻԴԻ ՆԿԱՐԸ",
+    "snp":"ԱՎԵԼԱՑՆԵԼ ՆՈՐ ՄՈԼՈՐԱԿ"
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 
- function Footer() {
+const Footer = () =>  {
     return (
         <footer>
             <div>© 2016</div>
