@@ -58,12 +58,6 @@ i18n.use(initReactI18next)
          i18n.changeLanguage("am")
      }
 
-
-
-
-
-
-
      return (
         <Suspense  fallback={"Loading"}>
         <header>
@@ -86,8 +80,7 @@ i18n.use(initReactI18next)
                     <NavLink to="newplanet"> {t("snp")}</NavLink>
                 </li>
                 <li className="languages">
-                    <span onClick={changToEn}>EN
-                    </span>
+                    <span onClick={changToEn}>EN</span>
                     <span  onClick={changToRu}> | РУ |</span>
                     <span onClick={changToAm}> ՀՅ</span>
                 </li>

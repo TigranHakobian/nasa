@@ -16,6 +16,8 @@ function NearAsteroids(props) {
 
     const [perPage, setPerPage] = useState(0)
 
+    const [isThereError, setIsError] = useState(false)
+
     const perPageEnd= Math.floor(allData.length/10) > 0 ? Math.floor(allData.length/10) + 1:Math.floor(allData.length/10)
 
 
@@ -51,11 +53,30 @@ function NearAsteroids(props) {
     }
 
     const find = () => {
-        setSearch(`${Math.random() * 10000}`)
-        console.log(Math.ceil(allData.length/10))
+
+         let a = startDate.replace("-","")
+         let c =   a.replace("-","")
+         let b = endDate.replace("-","")
+         let d =  b.replace("-","")
+
+        let balance = +d - +c
+
+        console.log(+d , +c)
+
+        console.log(balance)
+
+        if (balance < 7 || balance === 75 || balance === 74 || balance === 73 || balance === 72  || balance === 71  || balance === 70){
+            console.log(balance)
+            setIsError(false)
+
+            setSearch(`${Math.random() * 10000}`)
+            console.log(Math.ceil(allData.length/10))
+        }else
+        {
+            console.log("ERRROOORRRRR")
+            setIsError(true)
+        }
     }
-
-
     return (
         <Wrapper>
             <div className={"cal-and-btn"}>
@@ -75,10 +96,13 @@ function NearAsteroids(props) {
                         defaultValue={moment().format('YYYY-MM-DD')}
                         onChange={(e) => onChangeEndDate(e)}/>
                 </div>
-
-
                 <button onClick={find} className="btn-of-NA"> Go!</button>
             </div>
+            {
+                isThereError?
+                    <div className={"error-of-week"}>Range should not exceed 1 week</div>
+                           :null
+            }
             {allData.length === 0 ? null :
             <div className={"show-all"}>
             <div className={"table-of-div"}>

@@ -9,14 +9,11 @@ const AstronomyPictureOfTheDay = (props) => {
 
     useEffect(()=> {
         props.actionsApod(date)
-        console.log(11111111, props.apodData)
     },[date])
 
 
     const onChangeDate = (e) => {
         setDate(e.target.value);
-        console.log(e.target.value)
-
     }
 
     return (
@@ -34,8 +31,7 @@ const AstronomyPictureOfTheDay = (props) => {
                 <div className={"title-of-apod"}>{props.apodData.copyright}</div>
                 <div className={"explanation-of-apod"}>{props.apodData.explanation}</div>
                 <div className={"for-img"}>
-                    <img
-                    src={props.apodData.hdurl} alt="Photo"/>
+                    <img src={props.apodData.hdurl} alt="Photo"/>
                 </div>
             </>
         </Wrapper>

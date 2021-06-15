@@ -237,3 +237,15 @@ tr:nth-child(even) {
   background-color: rgb(249,249,249);
   font-size: 14px;
 }
+
+.error-of-week{
+  background-color: rgb(217,83,79);
+  text-align: center;
+  width: 21%;
+  height: 60px;
+  border-radius:  4px;
+  margin-left: 36.5%;
+  margin-top: 10px;
+  padding-top: 14px;
+  color: white;
+}
